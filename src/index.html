@@ -1,122 +1,122 @@
 <!doctype html>
 <html>
-<head>
-<title>SignUp</title>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-<link rel="stylesheet" href="assets/css/style.css">
-<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
-<script type="text/javascript" src="assets/js/app.js"></script>
-</head>
-
-<nav class="navbar navbar-expand-md bg-white navbar-white fixed-top">
-  <a class="nav1" href="#">Comunev</a>
-
-  <div  class="collapse navbar-collapse nav2">
-        <a class="nav-link" href="#">Login</a>
-</nav>
-
-<body class="container">
-<div class="col" ng-app="myApp" ng-controller="maincntrl">
-<div class="col-md-offset-1 col-md-6 col-sm-12" >
-<div class="login">
-
-<h2>SignUp</h2>
-
-<form class="form-horizontal" name="frm" novalidate>
-<!--Code to validate First name -->
-<div class="form-group" >
-<label id="label" class="control-label">First Name:</label>
-<input type="text" class="form-control" name="firstname" ng-model="user.firstname" placeholder="Enter First Name" autocomplete="off" ng-pattern="/^[a-zA-Z]*$/"  required/>
-<span class="msg" ng-show="!frm.firstname.$valid && frm.firstname.$touched">
-<span ng-show="frm.firstname.$error.required">Firstname is required.</span>
-<span ng-show="frm.firstname.$error.pattern">Firstname can only use letters.</span>
-</span>
-</div>
-
-<!--Code to validate LastName -->
-<div class="form-group" >
-<label id="label" class="control-label">Last Name:</label>
-<input type="text" class="form-control" name="lastname" ng-model="user.lastname" placeholder="Enter Last Name" autocomplete="off" ng-pattern="/^[a-zA-Z]*$/" required/>
-<span class="msg" ng-show="!frm.lastname.$valid && frm.lastname.$touched">
-<span ng-show="frm.lastname.$error.required">Lastname is required.</span>
-<span ng-show="frm.lastname.$error.pattern">Lastname can only use letters.</span>
-</span>
-
-</div>
-
-<!--Code to validate Username is written here-->
-<div class="form-group" >
-<label id="label" class="control-label">UserName:</label>
-<input type="text" class="form-control" name="username" ng-model="user.username" placeholder="Enter UserName" autocomplete="off"  ng-pattern="/^[a-zA-Z0-9_.]+$/" required/>
-<span class="msg" ng-show="!frm.username.$valid && frm.username.$touched">
-<span ng-show="frm.username.$error.required">Username is required.</span>
-<span ng-show="frm.username.$error.pattern">Username can only use letters, numbers, underscores and periods.</span>
-</span>
-</div>
-
-<!--Code to validate password is written here-->
-<div class="form-group">
-<label id="label" class="control-label">Password:</label>
-<input type="password" class="form-control" ng-model="user.pass" name="pass" placeholder="Enter Password" autocomplete="off" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}$/" ng-minlength="8" required>
-<span class="msg" ng-show="!frm.pass.$valid && frm.pass.$touched">
-<span class="msg" ng-show="frm.pass.$error.pattern">Password should be atleast 8 characters long and should contain one lowercase, one uppercase, one number and one special character.</span>
-
-<span ng-show="frm.pass.$error.required">Password is required.</span>
-</span>
-</div>
-
-
-
-<div class="form-group">
-<label id="label" class="control-label">Date of Birth:</label>
-<input class="form-control" ng-model="user.dob" name="dob" type="date" min="1900-01-01" max="{{today}}"  placeholder="Date of Birth:" required/>
-<span class="msg" ng-show="frm.dob.$dirty && frm.dob.$invalid">
-   <span ng-show="frm.dob.$error.required">Start Date is required</span>
-   <span ng-show="frm.dob.$error.max">Are you from future ?</span>
-   <span ng-show="frm.dob.$error.min">Does human life span really have a limit?</span>
-</span>
-
-</div>
-
-<!--Code to validate country field-->
-<div class="form-group">
-<label id="label" class="control-label">Country:</label>
-<select class="form-control" ng-model="user.country" name="cont" required>
-<option value="india">India</option>
-<option value="USA">USA</option>
-<option value="switzerland">Switzerland</option>
-<option value="spain">Spain</option>
-
-</select>
-<span class="msg" ng-show="frm.cont.$error.required">Select a Country.</span>
-</div>
-<!--Code to disable submit button is written here-->
-<div  class="form-group text-center submit1">
-<input ng-disabled="frm.$invalid" class="btn btn-default" type="submit" ng-click="call()" value="Submit">
-</div>
-</form>
-</div>
-</div>
-<!--code to show values after clicking on submit button-->
-<div class="col-md-offset-1 col-md-4 col-sm-12">
-<div class="alert1" ng-show="submit_success" style="word-wrap:break-word;">
-<div class="login headname" >
-<h2>submitted values</h2>
-<hr>
-<div class="row">
-<div class="col-md-5 headname">
-<b>FirstName:</b> </div>
-<div class="col-md-7 headname"> {{server.firstname}}</div> </div>
-
-<div class="row"><div class="col-md-5 headname"><b>LastName:</b> </div> <div class="col-md-7 headname"> {{server.lastname}}</div> </div>
-
-<div class="row"><div class="col-md-5 headname"><b>UserName: </b> </div> <div class="col-md-7 headname"> {{server.username}}<br></div></div>
-<div class="row"><div class="col-md-5 headname"><b>Password:</b></div><div class="col-md-7 headname"> {{server.pass}}<br></div></div>
-<div class="row"><div class="col-md-5 headname"><b>DOB: </b></div><div class="col-md-7 headname"> {{server.dob}}<br></div></div>
-<div class="row"><div class="col-md-5 headname"><b>Country: </b></div><div class="col-md-7 headname"> {{server.country}}<br></div></div>
-<b class="headname">JSON Data: </b> {{server}}
-</div>
-</div>
-</div>
-</body>
+   <head>
+      <title>SignUp</title>
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+      <link rel="stylesheet" href="assets/css/style.css">
+      <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.min.js"></script>
+      <script type="text/javascript" src="assets/js/app.js"></script>
+   </head>
+   <nav class="navbar navbar-expand-md bg-white navbar-white fixed-top">
+      <a class="nav1" href="#">Comunev</a>
+      <div  class="collapse navbar-collapse nav2">
+      <a class="nav-link" href="#">Login</a>
+   </nav>
+   <body class="container">
+      <div class="col" ng-app="myApp" ng-controller="maincntrl">
+      <div class="col-md-offset-1 col-md-6 col-sm-12" >
+         <div class="login">
+            <h2>SignUp</h2>
+            <form class="form-horizontal" name="frm" novalidate>
+               <!--Code to validate First name -->
+               <div class="form-group" >
+                  <label id="label" class="control-label">First Name:</label>
+                  <input type="text" class="form-control" name="firstname" ng-model="user.firstname" placeholder="Enter First Name" autocomplete="off" ng-pattern="/^[a-zA-Z]*$/"  required/>
+                  <span class="msg" ng-show="!frm.firstname.$valid && frm.firstname.$touched">
+                  <span ng-show="frm.firstname.$error.required">Firstname is required.</span>
+                  <span ng-show="frm.firstname.$error.pattern">Firstname can only use letters.</span>
+                  </span>
+               </div>
+               <!--Code to validate LastName -->
+               <div class="form-group" >
+                  <label id="label" class="control-label">Last Name:</label>
+                  <input type="text" class="form-control" name="lastname" ng-model="user.lastname" placeholder="Enter Last Name" autocomplete="off" ng-pattern="/^[a-zA-Z]*$/" required/>
+                  <span class="msg" ng-show="!frm.lastname.$valid && frm.lastname.$touched">
+                  <span ng-show="frm.lastname.$error.required">Lastname is required.</span>
+                  <span ng-show="frm.lastname.$error.pattern">Lastname can only use letters.</span>
+                  </span>
+               </div>
+               <!--Code to validate Username -->
+               <div class="form-group" >
+                  <label id="label" class="control-label">Username:</label>
+                  <input type="text" class="form-control" name="username" ng-model="user.username" placeholder="Enter UserName" autocomplete="off"  ng-pattern="/^[a-zA-Z0-9_.]+$/" required/>
+                  <span class="msg" ng-show="!frm.username.$valid && frm.username.$touched">
+                  <span ng-show="frm.username.$error.required">Username is required.</span>
+                  <span ng-show="frm.username.$error.pattern">Username can only use letters, numbers, underscores and periods.</span>
+                  </span>
+               </div>
+               <!--Code to validate password -->
+               <div class="form-group">
+                  <label id="label" class="control-label">Password:</label>
+                  <input type="password" class="form-control" ng-model="user.pass" name="pass" placeholder="Enter Password" autocomplete="off" ng-pattern="/^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&].{8,}$/" ng-minlength="8" required>
+                  <span class="msg" ng-show="!frm.pass.$valid && frm.pass.$touched">
+                  <span class="msg" ng-show="frm.pass.$error.pattern">Password should be atleast 8 characters long and should contain atleast one lowercase, one uppercase, one number and one special character.</span>
+                  <span ng-show="frm.pass.$error.required">Password is required.</span>
+                  </span>
+               </div>
+               <!--Code to validate DOB field-->
+               <div class="form-group">
+                  <label id="label" class="control-label">Date of Birth:</label>
+                  <input class="form-control" ng-model="user.dob" name="dob" type="date" min="1900-01-01" max="{{today}}"  placeholder="Date of Birth:" required/>
+                  <span class="msg" ng-show="frm.dob.$dirty && frm.dob.$invalid">
+                  <span ng-show="frm.dob.$error.required">DOB is required</span>
+                  <span ng-show="frm.dob.$error.max">Are you from future ?</span>
+                  <span ng-show="frm.dob.$error.min">Does human life span really have a limit?</span>
+                  </span>
+               </div>
+               <!--Code to validate country field-->
+               <div class="form-group">
+                  <label id="label" class="control-label">Country:</label>
+                  <select class="form-control" ng-model="user.country" name="cont" required>
+                     <option value="india">India</option>
+                     <option value="USA">USA</option>
+                     <option value="switzerland">Switzerland</option>
+                     <option value="spain">Spain</option>
+                  </select>
+                  <span class="msg" ng-show="frm.cont.$error.required">Select a Country.</span>
+               </div>
+               <!--Code to disable submit button is written here-->
+               <div  class="form-group text-center submit1">
+                  <input ng-disabled="frm.$invalid" class="btn btn-default" type="submit" ng-click="call()" value="Submit">
+               </div>
+            </form>
+         </div>
+      </div>
+      <!--code to show values after clicking on submit button-->
+      <div class="col-md-offset-1 col-md-4 col-sm-12">
+         <div class="alert1" ng-show="submit_success" style="word-wrap:break-word;">
+            <div class="login headname" >
+               <h2>submitted values</h2>
+               <hr>
+               <div class="row">
+                  <div class="col-md-5 headname">
+                     <b>FirstName:</b>
+                  </div>
+                  <div class="col-md-7 headname"> {{server.firstname}}</div>
+               </div>
+               <div class="row">
+                  <div class="col-md-5 headname"><b>LastName:</b> </div>
+                  <div class="col-md-7 headname"> {{server.lastname}}</div>
+               </div>
+               <div class="row">
+                  <div class="col-md-5 headname"><b>UserName: </b> </div>
+                  <div class="col-md-7 headname"> {{server.username}}<br></div>
+               </div>
+               <div class="row">
+                  <div class="col-md-5 headname"><b>Password:</b></div>
+                  <div class="col-md-7 headname"> {{server.pass}}<br></div>
+               </div>
+               <div class="row">
+                  <div class="col-md-5 headname"><b>DOB: </b></div>
+                  <div class="col-md-7 headname"> {{server.dob}}<br></div>
+               </div>
+               <div class="row">
+                  <div class="col-md-5 headname"><b>Country: </b></div>
+                  <div class="col-md-7 headname"> {{server.country}}<br></div>
+               </div>
+               <b class="headname">JSON Data: </b> {{server}}
+            </div>
+         </div>
+      </div>
+   </body>
 </html>
