@@ -1,0 +1,108 @@
+@import url(http://fonts.googleapis.com/css?family=Raleway);
+
+
+.container {
+  background: #3494E6;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #EC6EAD, #3494E6);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #EC6EAD, #3494E6); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+
+}
+
+h2{
+margin-top:20px;
+margin-bottom:20px;
+color:#FFFFF0;
+}
+.login h2{
+text-align:center;
+border-radius: 10px 10px 0 0;
+margin: -10px -40px;
+padding: 15px;
+}
+.login hr{
+border:0;
+border-bottom:1px solid #ccc;
+margin-left:-20px;
+margin-right: -20px;
+margin-bottom: 10px;
+}
+.login{
+width:100%;
+margin-left: 50%;
+margin-top: 100px;
+border-radius: 10px;
+font-family:raleway;
+border: 2px solid #ccc;
+padding: 5px 20px 5px;
+word-wrap: break-word;
+}
+.login p{
+margin-top:4px;
+font-size:14px;
+}
+
+input[type=text]{
+width:99.5%;
+padding: 8px;
+border: 1px solid #ccc;
+padding-left: 5px;
+font-size: 16px;
+font-family:raleway;
+}
+label#label{
+margin-bottom:5px;
+font-size:16px;
+font-weight:bold;
+color:#FFFFF0;
+}
+textarea.ng-invalid{
+border:1px solid green;
+border-left: 5px solid green;
+}
+textarea.ng-valid.ng-dirty{
+border:1px solid green;
+border-left: 5px solid green;
+}
+select.ng-invalid{
+border:1px solid #EC6EAD;
+border-left: 5px solid #EC6EAD;
+}
+select.ng-valid.ng-dirty{
+border:1px solid #3494E6;
+border-left: 5px solid #3494E6;
+}
+input.ng-invalid{
+border:1px solid 	#EC6EAD;
+border-left: 5px solid #EC6EAD;
+}
+input.ng-valid.ng-dirty{
+border:1px solid #4682B4;
+border-left: 5px solid #4682B4;
+}
+span.msg{
+margin-top:15px;
+color:#FFFFF0;
+}
+.headname{
+font-size:15px;
+color:#FFFFF0;
+}
+.alert1{
+  margin-left: 50%;
+  width:99.5%;
+}
+
+.nav1{
+  font-size: 22px;
+  background: -webkit-linear-gradient(#EC6EAD, #3494E6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.nav2{
+  font-size: 16px;
+  background: -webkit-linear-gradient(#EC6EAD, #3494E6);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  float: right;
+  margin-left: 88%;
+}
